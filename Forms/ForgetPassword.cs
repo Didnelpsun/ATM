@@ -14,18 +14,22 @@ namespace ATM.Forms
 {
     public partial class ForgetPassword : Form
     {
-        private int minLength = 3;
         public ForgetPassword()
         {
             InitializeComponent();
         }
 
-        private void ForgetPassword_Load(object sender, EventArgs e)
+        private void ResetLabel()
         {
             IDLabel.Text = "";
             nameLabel.Text = "";
             newLabel.Text = "";
             confirmLabel.Text = "";
+        }
+
+        private void ForgetPassword_Load(object sender, EventArgs e)
+        {
+            ResetLabel();
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -41,81 +45,43 @@ namespace ATM.Forms
             string UserName = userName.Text.ToString().Trim();
             string NewPsw = newPsw.Text.ToString().Trim();
             string ConfirmPsw = confirmPsw.Text.ToString().Trim();
-            string checkName = DAO.CheckUser(UserID).Trim();
+            string CheckName = DAO.CheckUser(UserID).ToString().Trim();
             //Console.WriteLine(UserID);
             //Console.WriteLine(UserName);
             //Console.WriteLine(NewPsw);
             //Console.WriteLine(ConfirmPsw);
             //Console.WriteLine(checkName);
-            if (UserID.Trim() == "")
+            ResetLabel();
+            int result = DAO.ForgetPassword(UserID, UserName, NewPsw, ConfirmPsw, CheckName);
+            switch (result)
             {
-                IDLabel.Text = "ID不应为空！";
-            }
-            else
-            {
-                IDLabel.Text = "";
-                if (checkName == null)
-                {
+                case -1:
+                    MessageBox.Show("密码更新失败！");
+                    break;
+                case 0:
+                    MessageBox.Show("密码更新成功！");
+                    Visible = false;
+                    Main main = new Main();
+                    main.Show();
+                    break;
+                case 1:
+                    IDLabel.Text = "ID不应为空！";
+                    break;
+                case 2:
                     IDLabel.Text = "ID不存在！";
-                }
-                else
-                {
-                    IDLabel.Text = "";
-                    if (Convert.ToBoolean(UserName.CompareTo(checkName)))
-                    {
-                        nameLabel.Text = "ID与用户名不匹配！";
-                    }
-                    else
-                    {
-                        nameLabel.Text = "";
-                        if(NewPsw.Length < minLength)
-                        {
-                            newLabel.Text = "密码过短！";
-                        }
-                        else if (!Utils.CheckValidChar(NewPsw))
-                        {
-                            newLabel.Text = "密码存在非法值";
-                        }
-                        else
-                        {
-                            newLabel.Text = "";
-                            if (Convert.ToBoolean(ConfirmPsw.CompareTo(NewPsw))){
-                                confirmLabel.Text = "密码不一致！";
-                            }
-                            else
-                            {
-                                confirmLabel.Text = "";
-                                SqlConnection conn = DAO.Connection();
-                                string updatePsw = "UPDATE [User] SET Password='" + NewPsw + "' WHERE UserID = '" + UserID + "'";
-                                //Console.WriteLine(updatePsw);
-                                try
-                                {
-                                    conn.Open();
-                                    SqlCommand command = conn.CreateCommand();
-                                    command.CommandText = updatePsw;
-                                    int rows = command.ExecuteNonQuery();
-                                    conn.Close();
-                                    if (rows > 0)
-                                    {
-                                        MessageBox.Show("密码更新成功！");
-                                        Visible = false;
-                                        Main main = new Main();
-                                        main.Show();
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("密码更新失败！");
-                                    }
-                                }
-                                catch(Exception exception)
-                                {
-                                    Debug.WriteLine(exception.Message.ToString());
-                                    MessageBox.Show("程序出现错误！");
-                                }
-                            }
-                        }
-                    }
-                }
+                    break;
+                case 3:
+                    nameLabel.Text = "ID与用户名不匹配！";
+                    break;
+                case 4:
+                    newLabel.Text = "密码过短！";
+                    break;
+                case 5:
+                    newLabel.Text = "密码存在非法值";
+                    break;
+                case 6:
+                    confirmLabel.Text = "密码不一致！";
+                    break;
             }
         }
     }

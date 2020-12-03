@@ -16,11 +16,16 @@ namespace ATM.Forms
             this.user = user;
         }
 
+        private void ResetLabel()
+        {
+            oldLabel.Text = "";
+            newLabel.Text = "";
+            confirmLabel.Text = "";
+        }
+
         private void ChangePassword_Load(object sender, EventArgs e)
         {
-            this.oldLabel.Text = "";
-            this.newLabel.Text = "";
-            this.confirmLabel.Text = "";
+            ResetLabel();
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -40,68 +45,34 @@ namespace ATM.Forms
             //Console.WriteLine(NewPsw);
             //Console.WriteLine(ConfirmPsw);
             //Console.WriteLine(checkName);
-            if (OldPsw.Trim() == "")
+            ResetLabel();
+            int result = DAO.ChangePassword(OldPsw, NewPsw, ConfirmPsw, user);
+            switch (result)
             {
-                oldLabel.Text = "旧密码不应为空！";
-            }
-            else
-            {
-                oldLabel.Text = "";
-                if (OldPsw != user.Password)
-                {
+                case -1:
+                    MessageBox.Show("密码更新失败！");
+                    break;
+                case 0:
+                    MessageBox.Show("密码更新成功！");
+                    Visible = false;
+                    MainFunction mainFunction = new MainFunction(user);
+                    mainFunction.Show();
+                    break;
+                case 1:
+                    oldLabel.Text = "旧密码不应为空！";
+                    break;
+                case 2:
                     oldLabel.Text = "旧密码错误！";
-                }
-                else
-                {
-                    oldLabel.Text = "";
-                    if (NewPsw.Length < minLength)
-                    {
-                        newLabel.Text = "密码过短！";
-                    }
-                    else if (!Utils.CheckValidChar(NewPsw))
-                    {
-                        newLabel.Text = "密码存在非法值";
-                    }
-                    else
-                    {
-                        newLabel.Text = "";
-                        if (Convert.ToBoolean(ConfirmPsw.CompareTo(NewPsw)))
-                        {
-                            confirmLabel.Text = "密码不一致！";
-                        }
-                        else
-                        {
-                            confirmLabel.Text = "";
-                            SqlConnection conn = DAO.Connection();
-                            string updatePsw = "UPDATE [User] SET Password='" + NewPsw + "' WHERE UserID = '" + user.UserId + "'";
-                            //Console.WriteLine(updatePsw);
-                            try
-                            {
-                                conn.Open();
-                                SqlCommand command = conn.CreateCommand();
-                                command.CommandText = updatePsw;
-                                int rows = command.ExecuteNonQuery();
-                                conn.Close();
-                                if (rows > 0)
-                                {
-                                    MessageBox.Show("密码更新成功！");
-                                    Visible = false;
-                                    MainFunction mainFunction = new MainFunction(user);
-                                    mainFunction.Show();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("密码更新失败！");
-                                }
-                            }
-                            catch (Exception exception)
-                            {
-                                Debug.WriteLine(exception.Message.ToString());
-                                MessageBox.Show("程序出现错误！");
-                            }
-                        }
-                    }
-                }
+                    break;
+                case 3:
+                    newLabel.Text = "密码过短！";
+                    break;
+                case 4:
+                    newLabel.Text = "密码存在非法值";
+                    break;
+                case 5:
+                    confirmLabel.Text = "密码不一致！";
+                    break;
             }
         }
     }

@@ -74,6 +74,9 @@
     </Compile>
     <Compile Include="DAO\CheckRepeatUserName.cs" />
     <Compile Include="DAO\AccessAuthority.cs" />
+    <Compile Include="DAO\ChangeUserName.cs" />
+    <Compile Include="DAO\ChangePassword.cs" />
+    <Compile Include="DAO\ForgetPassword.cs" />
     <Compile Include="DAO\GetBankList.cs" />
     <Compile Include="DAO\GetBankName.cs" />
     <Compile Include="DAO\GetGradeName.cs" />
