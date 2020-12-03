@@ -58,7 +58,16 @@ namespace ATM.Forms
 
         private void Determine_Click(object sender, EventArgs e)
         {
+            float amount = keyBoard.GetAmount();
+            string updateAmount;
+            if (status)
+            {
 
+            }
+            else
+            {
+
+            }
         }
     }
 }

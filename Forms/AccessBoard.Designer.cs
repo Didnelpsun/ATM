@@ -49,7 +49,7 @@ namespace ATM.Forms
             this.flow = new System.Windows.Forms.Label();
             this.determine = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.keyBoard1 = new ATM.Control.KeyBoard();
+            this.keyBoard = new ATM.Control.KeyBoard();
             this.SuspendLayout();
             // 
             // title
@@ -270,13 +270,13 @@ namespace ATM.Forms
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
-            // keyBoard1
+            // keyBoard
             // 
-            this.keyBoard1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.keyBoard1.Location = new System.Drawing.Point(418, 36);
-            this.keyBoard1.Name = "keyBoard1";
-            this.keyBoard1.Size = new System.Drawing.Size(136, 229);
-            this.keyBoard1.TabIndex = 20;
+            this.keyBoard.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.keyBoard.Location = new System.Drawing.Point(418, 36);
+            this.keyBoard.Name = "keyBoard";
+            this.keyBoard.Size = new System.Drawing.Size(136, 229);
+            this.keyBoard.TabIndex = 20;
             // 
             // AccessBoard
             // 
@@ -285,7 +285,7 @@ namespace ATM.Forms
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(585, 310);
             this.ControlBox = false;
-            this.Controls.Add(this.keyBoard1);
+            this.Controls.Add(this.keyBoard);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.determine);
             this.Controls.Add(this.flow);
@@ -337,6 +337,6 @@ namespace ATM.Forms
         private System.Windows.Forms.Label flow;
         private System.Windows.Forms.Button determine;
         private System.Windows.Forms.Button cancel;
-        private Control.KeyBoard keyBoard1;
+        private Control.KeyBoard keyBoard;
     }
 }
