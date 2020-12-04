@@ -11,7 +11,6 @@ namespace ATM
         public static Account GetAccount(Account account)
         {
             SqlConnection conn = DAO.Connection();
-            // 查询对应ID下的多个账户
             string queryAccount = "SELECT AccountName, AccountBank, AccountType, Balance, Grade, Flow FROM [Account] WHERE AccountID ='" + account.AccountID + "'";
             try
             {

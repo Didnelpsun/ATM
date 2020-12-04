@@ -72,6 +72,7 @@
     <Compile Include="Control\KeyBoard.Designer.cs">
       <DependentUpon>KeyBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\Transfer.cs" />
     <Compile Include="DAO\Access.cs" />
     <Compile Include="DAO\AddAcount.cs" />
     <Compile Include="DAO\CheckRepeatUserName.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="DAO\ChangePassword.cs" />
     <Compile Include="DAO\ForgetPassword.cs" />
     <Compile Include="DAO\GetAccount.cs" />
+    <Compile Include="DAO\GetAccountList.cs" />
     <Compile Include="DAO\GetBankList.cs" />
     <Compile Include="DAO\GetBankName.cs" />
     <Compile Include="DAO\GetGradeName.cs" />
@@ -120,6 +122,12 @@
     <Compile Include="Forms\ForgetPassword.Designer.cs">
       <DependentUpon>ForgetPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TransferBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TransferBoard.Designer.cs">
+      <DependentUpon>TransferBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Object\Account.cs" />
     <Compile Include="DAO\Connection.cs" />
     <Compile Include="DAO\GetAccountSet.cs" />
@@ -137,6 +145,7 @@
       <DependentUpon>MainFunction.cs</DependentUpon>
     </Compile>
     <Compile Include="Object\Authority.cs" />
+    <Compile Include="Object\Bank.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Object\User.cs" />
@@ -168,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainFunction.resx">
       <DependentUpon>MainFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransferBoard.resx">
+      <DependentUpon>TransferBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

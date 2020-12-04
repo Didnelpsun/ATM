@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using ATM.Object;
 
 namespace ATM
 {
@@ -31,38 +31,6 @@ namespace ATM
             {
                 Debug.WriteLine(e.Message.ToString());
                 return new List<Bank>();
-            }
-        }
-        public class Bank
-        {
-            public int id;
-            public string name;
-            public int ID
-            {
-                set
-                {
-                    id = value;
-                }
-                get
-                {
-                    return id;
-                }
-            }
-            public string Name
-            {
-                set
-                {
-                    name = value;
-                }
-                get
-                {
-                    return name;
-                }
-            }
-            public Bank(int id, string name)
-            {
-                ID = id;
-                Name = name;
             }
         }
     }

@@ -112,6 +112,19 @@ namespace ATM.Object
             userid = null;
             flow = 0;
         }
+
+        public Account(string id)
+        {
+            accountid = id;
+            accountname = null;
+            accountbank = 0;
+            AccountType = false;
+            balance = 0;
+            grade = -1;
+            userid = null;
+            flow = 0;
+        }
+
         public Account(string id, string name, int bank, bool type, float bal, int g, string uid, float fl)
         {
             accountid = id;

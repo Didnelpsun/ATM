@@ -7,10 +7,6 @@ namespace ATM.Forms
     public partial class AccountBoard : Form
     {
         private Account account;
-        public AccountBoard()
-        {
-            InitializeComponent();
-        }
 
         public AccountBoard(Account account)
         {
@@ -65,7 +61,9 @@ namespace ATM.Forms
 
         private void Transfer_Click(object sender, EventArgs e)
         {
-
+            Visible = false;
+            TransferBoard transferBoard = new TransferBoard(account);
+            transferBoard.Show();
         }
     }
 }

@@ -86,7 +86,14 @@ namespace ATM.Control
         }
         public float GetAmount()
         {
-            return Convert.ToSingle(amount.Text);
+            if(amount.Text.ToString().Trim() == "")
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToSingle(amount.Text.ToString());
+            }
         }
     }
 }
