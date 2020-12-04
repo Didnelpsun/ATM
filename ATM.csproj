@@ -72,11 +72,14 @@
     <Compile Include="Control\KeyBoard.Designer.cs">
       <DependentUpon>KeyBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\Access.cs" />
+    <Compile Include="DAO\AddAcount.cs" />
     <Compile Include="DAO\CheckRepeatUserName.cs" />
     <Compile Include="DAO\AccessAuthority.cs" />
     <Compile Include="DAO\ChangeUserName.cs" />
     <Compile Include="DAO\ChangePassword.cs" />
     <Compile Include="DAO\ForgetPassword.cs" />
+    <Compile Include="DAO\GetAccount.cs" />
     <Compile Include="DAO\GetBankList.cs" />
     <Compile Include="DAO\GetBankName.cs" />
     <Compile Include="DAO\GetGradeName.cs" />
@@ -119,7 +122,7 @@
     </Compile>
     <Compile Include="Object\Account.cs" />
     <Compile Include="DAO\Connection.cs" />
-    <Compile Include="DAO\GetAccount.cs" />
+    <Compile Include="DAO\GetAccountSet.cs" />
     <Compile Include="DAO\Login.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>

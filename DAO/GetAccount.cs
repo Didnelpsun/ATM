@@ -8,24 +8,37 @@ namespace ATM
 {
     partial class DAO
     {
-        public static DataSet GetAccount(User user)
+        public static Account GetAccount(Account account)
         {
             SqlConnection conn = DAO.Connection();
             // 查询对应ID下的多个账户
-            string queryAccount = "SELECT AccountID, AccountName, AccountBank, AccountType, Balance, Grade, Flow FROM [Account] WHERE UserID ='" + user.UserId + "'";
+            string queryAccount = "SELECT AccountName, AccountBank, AccountType, Balance, Grade, Flow FROM [Account] WHERE AccountID ='" + account.AccountID + "'";
             try
             {
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(queryAccount, conn);
-                DataSet dataSet = new DataSet();
-                dataAdapter.Fill(dataSet, "Account");
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = queryAccount;
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        account.AccountName = reader["AccountName"].ToString().Trim();
+                        account.AccountBank = Convert.ToInt16(reader["AccountBank"]);
+                        account.AccountType = Convert.ToBoolean(reader["AccountType"]);
+                        account.Balance = Convert.ToSingle(reader["Balance"]);
+                        account.Grade = Convert.ToInt16(reader["Grade"]);
+                        account.Flow = Convert.ToSingle(reader["Flow"]);
+                    }
+                }
+                reader.Close();
                 conn.Close();
-                return dataSet;
             }
             catch(Exception e)
             {
                 Debug.WriteLine(e.Message.ToString());
-                return new DataSet();
             }
+            return account;
         }
     }
 }

@@ -9,7 +9,6 @@ namespace ATM.Forms
     public partial class ChangePassword : Form
     {
         private User user;
-        private int minLength = 3;
         public ChangePassword(User user)
         {
             InitializeComponent();

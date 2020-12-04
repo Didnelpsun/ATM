@@ -24,7 +24,7 @@ namespace ATM.Forms
             this.accountView.MultiSelect = false;
             // 选择时选取一行
             this.accountView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.accountView.DataSource = DAO.GetAccount(this.user).Tables["Account"];
+            this.accountView.DataSource = DAO.GetAccountSet(this.user).Tables["Account"];
             this.accountView.Columns[0].HeaderText = "账户ID";
             this.accountView.Columns[1].HeaderText = "账户名";
             this.accountView.Columns[2].HeaderText = "银行类型";

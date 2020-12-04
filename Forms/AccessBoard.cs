@@ -59,14 +59,30 @@ namespace ATM.Forms
         private void Determine_Click(object sender, EventArgs e)
         {
             float amount = keyBoard.GetAmount();
-            string updateAmount;
-            if (status)
+            //Console.WriteLine(amount);
+            if (amount == 0)
             {
-
+                MessageBox.Show("请输入不为0的数字");
+                return;
             }
-            else
+            int result = DAO.Access(account, status, amount);
+            switch (result)
             {
-
+                case -1:
+                    MessageBox.Show("账户金额变动失败");
+                    break;
+                case 0:
+                    Visible = false;
+                    DAO.GetAccount(account);
+                    AccountBoard accountBoard = new AccountBoard(account);
+                    accountBoard.Show();
+                    break;
+                case 1:
+                    MessageBox.Show(String.Format("存款金额{0}超过权限（{1}元）", amount.ToString(), authority.Draw.ToString()));
+                    break;
+                case 2:
+                    MessageBox.Show(String.Format("取款金额{0}后超过信用额（{1}元）", amount.ToString(), authority.Loan.ToString()));
+                    break;
             }
         }
     }

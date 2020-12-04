@@ -106,9 +106,9 @@ namespace ATM.Object
             accountid = null;
             accountname = null;
             accountbank = 0;
-            accounttype = false;
+            AccountType = false;
             balance = 0;
-            grade = 0;
+            grade = -1;
             userid = null;
             flow = 0;
         }
