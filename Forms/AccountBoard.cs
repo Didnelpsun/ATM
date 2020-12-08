@@ -65,5 +65,10 @@ namespace ATM.Forms
             TransferBoard transferBoard = new TransferBoard(account);
             transferBoard.Show();
         }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

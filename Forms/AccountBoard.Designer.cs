@@ -49,6 +49,7 @@ namespace ATM.Forms
             this.withdraw = new System.Windows.Forms.Button();
             this.transfer = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -262,7 +263,7 @@ namespace ATM.Forms
             this.withdraw.FlatAppearance.BorderSize = 0;
             this.withdraw.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.withdraw.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.withdraw.Location = new System.Drawing.Point(183, 266);
+            this.withdraw.Location = new System.Drawing.Point(145, 266);
             this.withdraw.Margin = new System.Windows.Forms.Padding(0);
             this.withdraw.Name = "withdraw";
             this.withdraw.Size = new System.Drawing.Size(75, 23);
@@ -277,7 +278,7 @@ namespace ATM.Forms
             this.transfer.FlatAppearance.BorderSize = 0;
             this.transfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.transfer.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.transfer.Location = new System.Drawing.Point(333, 266);
+            this.transfer.Location = new System.Drawing.Point(256, 266);
             this.transfer.Margin = new System.Windows.Forms.Padding(0);
             this.transfer.Name = "transfer";
             this.transfer.Size = new System.Drawing.Size(75, 23);
@@ -293,7 +294,7 @@ namespace ATM.Forms
             this.exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exit.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.exit.ForeColor = System.Drawing.Color.White;
-            this.exit.Location = new System.Drawing.Point(477, 266);
+            this.exit.Location = new System.Drawing.Point(472, 266);
             this.exit.Margin = new System.Windows.Forms.Padding(0);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(75, 23);
@@ -302,6 +303,22 @@ namespace ATM.Forms
             this.exit.UseVisualStyleBackColor = false;
             this.exit.Click += new System.EventHandler(this.Exit_Click);
             // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.LightCoral;
+            this.delete.FlatAppearance.BorderSize = 0;
+            this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.delete.ForeColor = System.Drawing.Color.White;
+            this.delete.Location = new System.Drawing.Point(369, 266);
+            this.delete.Margin = new System.Windows.Forms.Padding(0);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.TabIndex = 17;
+            this.delete.Text = "删除账户";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.Delete_Click);
+            // 
             // AccountBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -309,6 +326,7 @@ namespace ATM.Forms
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(585, 310);
             this.ControlBox = false;
+            this.Controls.Add(this.delete);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.transfer);
             this.Controls.Add(this.withdraw);
@@ -349,5 +367,6 @@ namespace ATM.Forms
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Label flow;
         private System.Windows.Forms.Label flowLabel;
+        private System.Windows.Forms.Button delete;
     }
 }
