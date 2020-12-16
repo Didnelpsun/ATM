@@ -38,7 +38,7 @@ namespace ATM
                             SqlConnection conn = DAO.Connection();
                             string addAccount = "INSERT INTO Account VALUES ('{0}', N'{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')";
                             addAccount = string.Format(addAccount, account.AccountID, account.AccountName, account.AccountBank, account.AccountType, account.Balance, account.Grade, account.UserID, account.Flow);
-                            Console.WriteLine(addAccount);
+                            //Console.WriteLine(addAccount);
                             try
                             {
                                 conn.Open();

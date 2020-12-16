@@ -68,7 +68,25 @@ namespace ATM.Forms
 
         private void Delete_Click(object sender, EventArgs e)
         {
-
+            if(account.Balance == 0)
+            {
+                if (DAO.DeleteAcount(account) == 0)
+                {
+                    Visible = false;
+                    User user = new User(account.UserID);
+                    MainFunction mainFunction = new MainFunction(user);
+                    mainFunction.Show();
+                    MessageBox.Show(String.Format("删除{0}账户成功！", account.AccountName));
+                }
+                else
+                {
+                    MessageBox.Show(String.Format("删除{0}账户失败！", account.AccountName));
+                }
+            }
+            else
+            {
+                MessageBox.Show(String.Format("您的账户上有{0}元，\n只有账户清零才可以删除账户！", account.Balance.ToString()));
+            }
         }
     }
 }

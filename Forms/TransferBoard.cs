@@ -29,7 +29,7 @@ namespace ATM.Forms
             loan.Text = account.Flow.ToString();
             tarAccountID.Text = "";
             User user = new User(account.UserID);
-            accountList.DataSource = DAO.GetAccountList(user);
+            accountList.DataSource = DAO.GetAccountList(user, account);
             accountList.ValueMember = "AccountID";
             accountList.DisplayMember = "AccountName";
             accountList.SelectedIndex = -1;
@@ -77,14 +77,22 @@ namespace ATM.Forms
                 }
                 else
                 {
-                    if(DAO.GetAccount(new Account(tarAccountID.Text.ToString().Trim())).AccountName == null)
+                    if (account.AccountID == tarAccountID.Text.ToString().Trim())
                     {
-                        MessageBox.Show(String.Format("找不到这个账户ID（{0}）！", tarAccountID.Text.ToString().Trim()));
+                        MessageBox.Show("账户ID不能相同");
                         return;
                     }
                     else
                     {
-                        tarAccount.AccountID = tarAccountID.Text.ToString().Trim();
+                        if (DAO.GetAccount(new Account(tarAccountID.Text.ToString().Trim())).AccountName == null)
+                        {
+                            MessageBox.Show(String.Format("找不到这个账户ID（{0}）！", tarAccountID.Text.ToString().Trim()));
+                            return;
+                        }
+                        else
+                        {
+                            tarAccount.AccountID = tarAccountID.Text.ToString().Trim();
+                        }
                     }
                 }
                 DAO.GetAccount(tarAccount);
