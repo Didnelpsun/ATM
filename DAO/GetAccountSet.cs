@@ -15,6 +15,7 @@ namespace ATM
             string queryAccount = "SELECT AccountID, AccountName, AccountBank, AccountType, Balance, Grade, Flow FROM [Account] WHERE UserID ='" + user.UserId + "'";
             try
             {
+                conn.Open();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(queryAccount, conn);
                 DataSet dataSet = new DataSet();
                 dataAdapter.Fill(dataSet, "Account");
