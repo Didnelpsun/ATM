@@ -37,6 +37,7 @@ namespace ATM.Forms
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.forgetPsw = new System.Windows.Forms.Label();
+            this.logon = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -124,6 +125,18 @@ namespace ATM.Forms
             this.forgetPsw.Text = "忘记密码？";
             this.forgetPsw.Click += new System.EventHandler(this.ForgetPsw_Click);
             // 
+            // logon
+            // 
+            this.logon.AutoSize = true;
+            this.logon.Font = new System.Drawing.Font("楷体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.logon.ForeColor = System.Drawing.Color.White;
+            this.logon.Location = new System.Drawing.Point(156, 245);
+            this.logon.Name = "logon";
+            this.logon.Size = new System.Drawing.Size(29, 12);
+            this.logon.TabIndex = 9;
+            this.logon.Text = "注册";
+            this.logon.Click += new System.EventHandler(this.Logon_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -132,6 +145,7 @@ namespace ATM.Forms
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(585, 310);
             this.ControlBox = false;
+            this.Controls.Add(this.logon);
             this.Controls.Add(this.forgetPsw);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -162,6 +176,7 @@ namespace ATM.Forms
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label forgetPsw;
+        private System.Windows.Forms.Label logon;
     }
 }
 

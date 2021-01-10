@@ -62,5 +62,12 @@ namespace ATM.Forms
             ForgetPassword forgetPassword = new ForgetPassword();
             forgetPassword.Show();
         }
+
+        private void Logon_Click(object sender, EventArgs e)
+        {
+            Visible = false;
+            AddUser addUser = new AddUser();
+            addUser.Show();
+        }
     }
 }

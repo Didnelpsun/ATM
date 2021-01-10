@@ -72,6 +72,7 @@
     <Compile Include="Control\KeyBoard.Designer.cs">
       <DependentUpon>KeyBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\AddUser.cs" />
     <Compile Include="DAO\DeleteAcount.cs" />
     <Compile Include="DAO\Transfer.cs" />
     <Compile Include="DAO\Access.cs" />
@@ -98,6 +99,12 @@
     </Compile>
     <Compile Include="Forms\AccountBoard.Designer.cs">
       <DependentUpon>AccountBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddAcount.cs">
       <SubType>Form</SubType>
@@ -163,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddAcount.resx">
       <DependentUpon>AddAcount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
