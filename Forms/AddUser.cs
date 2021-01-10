@@ -55,6 +55,7 @@ namespace ATM.Forms
             if (user.Password != confirmWord.Text.ToString().Trim())
             {
                 confirmLabel.Text = "密码不一致！";
+                return;
             }
             int result = DAO.AddUser(user);
             switch (result)
@@ -70,6 +71,9 @@ namespace ATM.Forms
                     break;
                 case 1:
                     MessageBox.Show("程序异常！");
+                    break;
+                case 2:
+                    MessageBox.Show("用户名重复！");
                     break;
             }
         }

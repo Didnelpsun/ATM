@@ -12,7 +12,7 @@ namespace ATM
         {
             SqlConnection conn = DAO.Connection();
             // 查询账户是否存在
-            string queryUserName = "SELECT UserID, UserName FROM [User] WHERE UserName='" + userName + "'";
+            string queryUserName = "SELECT UserID, UserName FROM [User] WHERE UserName=N'" + userName + "'";
             try
             {
                 // 打开数据链接

@@ -17,30 +17,38 @@ namespace ATM
             }
             else
             {
-                SqlConnection conn = DAO.Connection();
-                string addUser = "INSERT INTO [User] VALUES ('{0}', N'{1}', '{2}')";
-                addUser = string.Format(addUser, user.UserId, user.UserName, user.Password);
-                //Console.WriteLine(addAccount);
-                try
+                int status = DAO.CheckRepeatUserName(user.UserId, user.UserName);
+                if (status == 0)
                 {
-                    conn.Open();
-                    SqlCommand command = conn.CreateCommand();
-                    command.CommandText = addUser;
-                    int rows = command.ExecuteNonQuery();
-                    if (rows == 1)
+                    SqlConnection conn = DAO.Connection();
+                    string addUser = "INSERT INTO [User] VALUES ('{0}', N'{1}', '{2}')";
+                    addUser = string.Format(addUser, user.UserId, user.UserName, user.Password);
+                    //Console.WriteLine(addAccount);
+                    try
                     {
-                        return 0;
+                        conn.Open();
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = addUser;
+                        int rows = command.ExecuteNonQuery();
+                        if (rows == 1)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            Console.WriteLine("影响行数为{0}", rows);
+                            return -1;
+                        }
                     }
-                    else
+                    catch (Exception exception)
                     {
-                        Console.WriteLine("影响行数为{0}", rows);
+                        Debug.WriteLine(exception.Message.ToString());
                         return -1;
                     }
                 }
-                catch (Exception exception)
+                else
                 {
-                    Debug.WriteLine(exception.Message.ToString());
-                    return -1;
+                    return 2;
                 }
             }
         }
