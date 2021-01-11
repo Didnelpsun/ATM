@@ -42,7 +42,7 @@ namespace ATM.Forms
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             AccountBoard accountBoard = new AccountBoard(account);
             accountBoard.Show();
         }
@@ -104,7 +104,7 @@ namespace ATM.Forms
                         break;
                     case 0:
                         MessageBox.Show(String.Format("转账{0}成功！{1}->{2}", amount, account.AccountID, tarAccount.AccountID));
-                        Visible = false;
+                        this.Close();
                         DAO.GetAccount(account);
                         AccountBoard accountBoard = new AccountBoard(account);
                         accountBoard.Show();

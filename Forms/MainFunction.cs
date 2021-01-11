@@ -36,7 +36,7 @@ namespace ATM.Forms
 
         private void Logout_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             Main main = new Main();
             main.Show();
         }
@@ -45,28 +45,28 @@ namespace ATM.Forms
         {
             DataGridViewRow row = this.accountView.Rows[this.accountView.CurrentRow.Index];
             Account account = new Account(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), Convert.ToInt16(row.Cells[2].Value), Convert.ToBoolean(row.Cells[3].Value), Convert.ToSingle(row.Cells[4].Value), Convert.ToInt16(row.Cells[5].Value), user.UserId.ToString(), Convert.ToSingle(row.Cells[6].Value));
-            Visible = false;
+            this.Close();
             AccountBoard accountBoard = new AccountBoard(account);
             accountBoard.Show();
         }
 
         private void ChangePass_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             ChangePassword changePassword = new ChangePassword(user);
             changePassword.Show();
         }
 
         private void ChangeUserName_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             ChangeUserName changeUserName = new ChangeUserName(user);
             changeUserName.Show();
         }
 
         private void AddAccount_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             AddAcount addAccount = new AddAcount(user);
             addAccount.Show();
         }

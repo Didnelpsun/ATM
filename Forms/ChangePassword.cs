@@ -29,7 +29,7 @@ namespace ATM.Forms
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             MainFunction mainFunction = new MainFunction(user);
             mainFunction.Show();
         }
@@ -53,7 +53,7 @@ namespace ATM.Forms
                     break;
                 case 0:
                     MessageBox.Show("密码更新成功！");
-                    Visible = false;
+                    this.Close();
                     MainFunction mainFunction = new MainFunction(user);
                     mainFunction.Show();
                     break;

@@ -39,29 +39,28 @@ namespace ATM.Forms
         private void Exit_Click(object sender, EventArgs e)
         {
             User user = new User(account.UserID);
-            Visible = false;
+            this.Close();
             MainFunction mainFunction = new MainFunction(user);
             mainFunction.Show();
         }
 
         private void Deposit_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             AccessBoard accessBoard = new AccessBoard(account, true);
             accessBoard.Show();
         }
 
         private void Withdraw_Click(object sender, EventArgs e)
         {
-
-            Visible = false;
+            this.Close();
             AccessBoard accessBoard = new AccessBoard(account, false);
             accessBoard.Show();
         }
 
         private void Transfer_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             TransferBoard transferBoard = new TransferBoard(account);
             transferBoard.Show();
         }
@@ -72,7 +71,7 @@ namespace ATM.Forms
             {
                 if (DAO.DeleteAcount(account) == 0)
                 {
-                    Visible = false;
+                    this.Close();
                     User user = new User(account.UserID);
                     MainFunction mainFunction = new MainFunction(user);
                     mainFunction.Show();

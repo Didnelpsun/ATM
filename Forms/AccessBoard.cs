@@ -51,7 +51,7 @@ namespace ATM.Forms
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            Visible = false;
+            this.Close();
             AccountBoard accountBoard = new AccountBoard(account);
             accountBoard.Show();
         }
@@ -72,7 +72,7 @@ namespace ATM.Forms
                     MessageBox.Show("账户金额变动失败！");
                     break;
                 case 0:
-                    Visible = false;
+                    this.Close();
                     DAO.GetAccount(account);
                     AccountBoard accountBoard = new AccountBoard(account);
                     accountBoard.Show();
